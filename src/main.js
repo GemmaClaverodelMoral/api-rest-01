@@ -9,26 +9,36 @@ error = document.querySelector('#error')
 
 // //******* CON FUNCION ASINCRONA 
 
-async function recargarImagenasyncronicax3() {
-    const res = await fetch( API_URL_RANDOM, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
+async function recargarImagenAsyncronica() {
+    try 
+    {
+        const res = await fetch( API_URL_RANDOM, 
+        {
+            headers: 
+            {
+                'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
+            }
+        })
+        
+        const data = await res.json()
+        revisarYmostrarError(res, data)
+        for (let i = 1; i<=6 ; i++)
+        {
+            const img = document.querySelector(`#img0${i}`)
+            const src = data[i-1].url
+            img.src = src
+            img.onclick = () => saveFavourite(data[i-1].id)
         }
-    })
-    const data = await res.json()
-    revisarYmostrarError(res, data)
-
-    for (let i = 1; i<=6 ; i++){
-        const img = document.querySelector(`#img0${i}`)
-        const src = data[i-1].url
-        img.src = src
-        img.onclick = () => saveFavourite(data[i-1].id)
-    }
+   } 
+   
+   catch (error) 
+   {
+        console.log('error descargando imagenes', error.message)
+        error.innerHTML = error.message
+   }
 
 }
-recargarImagenasyncronicax3()
+recargarImagenAsyncronica()
 
 async function loadFavourites(){
     const res = await fetch( API_URL_FAVOURITES, {
