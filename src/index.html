@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GATITOS</title>
+</head>
+
+<body>
+  <header>
+    <div id="titulo">
+      <p>My Michis APP</p>
+      <img id="logo-gatito" src="./assets/logo-gatito-naranja.PNG" alt="logo-gatito-naranja">
+    </div>
+    <h3>Trabajando con API REST htpps://www.thecatapi.com: </h3>
+    <h3><span id="error"></span></h3>
+  </header>
+
+
+   <!-- <section id="promise-await"> PRUEBA DE PROMISE y ASYNC
+        <h2>1 foto Con Promise o con Async</h2>
+        <Button onclick="recargarImagen()" alt="Boton de recarga con promesas">Nueva imagen con promesa</BUtton>
+        <Button onclick="recargarImagenasyncronica()" alt="Boton de recarga con async">Nueva imagen con await</BUtton><br>
+            
+        <img width='25%' alt="Foto Gatitos aleatoria">
+   </section> -->
+
+   <section id="ramdom">
+     <div id="ramdom-header">
+        
+        <Button onclick="recargarImagenasyncronicax3()" alt="Boton de recarga con async">Recarga mas lindos mininos...</Button>
+        <h3>Hacer click sobre la imagen si deseas guardarla en tus Favoritas</h3>
+      </div>
+     <div id="ramdom-list">
+        <img id='img01' alt="Foto Gatitos aleatoria">
+        <img id='img02' alt="Foto Gatitos aleatoria">
+        <img id='img03' alt="Foto Gatitos aleatoria">
+        <img id='img04' alt="Foto Gatitos aleatoria">
+        <img id='img05' alt="Foto Gatitos aleatoria">
+        <img id='img06' alt="Foto Gatitos aleatoria">
+      </div>    
+    </section>
+    
+    
+   <section id="favourites">
+        <div id="favourites-header">
+            <h2>Mis Michis favoritos</h2>
+            <h3>Hacer click sobre las imagenes si deseas sacar una foto de favoritos</h3>
+        </div>
+        <div id="favourites-list"></div>
+        </div>
+   </section>
+
+<script src="./main.js"></script>
+
+</body>
+</html>
