@@ -7,12 +7,15 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
 section {
     width: 80%;
     margin: 0;
 }
-
+#cabecera {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 #titulo {
     display:flex;
     justify-content: center;
@@ -24,7 +27,7 @@ section {
 #logo-gatito {
     width: 50px;
 }
-#ramdom-header, #favourites-header {
+#random-header, #favourites-header {
     display:flex;
     flex-direction: column;
 }
@@ -35,13 +38,13 @@ h1, h2, h3, button {
     padding:0;
 }
 
-#ramdom-list, #favourites-list {
+#random-list, #favourites-list {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
-#ramdom-list img, #favourites-list img {
+#random-list img, #favourites-list img {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1; /* Ensure the container is square */
@@ -51,20 +54,20 @@ h1, h2, h3, button {
  
 }
 
-#ramdom-list img:hover, #favourites-list img:hover {
+#random-list img:hover, #favourites-list img:hover {
     filter: brightness(80%);
     object-fit: contain;
     
 }
 
 @media (min-width: 768px) {
-    #ramdom-list, #favourites-list {
+    #random-list, #favourites-list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
-    #ramdom-list, #favourites-list {
+    #random-list, #favourites-list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
