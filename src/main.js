@@ -5,7 +5,8 @@ const API_URL_FAVOURITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourit
 const API_KEY = "live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq"
   
 reloadbtn = document.querySelector('button')
-error = document.querySelector('#error')
+errorDOM = document.querySelector('#error')
+errorDOM.innerHTML = 'Aqui saldran los errores, ... si los hay'
 
 // //******* CON FUNCION ASINCRONA 
 
@@ -86,26 +87,40 @@ async function saveFavourite(id) { // como saber cual es el id de la foto que es
     }
 }
 async function favouriteOut(id) {
-    try 
-    {
-        console.log('gatito a eliminar:',id)
-        const res = await fetch(API_URL_FAVOURITES_DELETE(id),
-            {
-            method: 'DELETE',
-            headers: {
-                'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
-            }
-            })
-        const data = await res.json()
-        console.log('imagen eliminada defavoritos')
+    console.log('gatito a eliminar:',id)
+    const res = await fetch(API_URL_FAVOURITES_DELETE(id),
+        {
+        method: 'DELETE',
+        headers: {
+            'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
+        }
+        })
+    const data = await res.json()
+    console.log('res.status: ',res.status)
+    if (res.status !== 200){
+        errorDOM.innerHTML = data.message
+        console.log('mensaje:', data.message)
+    } else {
+        console.log('imagen eliminada de favoritos', 'res:', res, 'data:', data)
         cargarFavoritas()
     }
-    catch (error) {
-        console.log('error borrando de favoritas', error.message)
-        error.innerHTML = error.message
-    }
-    
 }
 
 cargarImagenesRandom()
 cargarFavoritas()
+
+
+//  function handleDoubleClick(event) {
+//     const imageId = event.target.id;
+//     console.log('Imagen doble clickeada:', imageId);
+
+// }
+
+
+// const images = document.querySelectorAll('#favourites-list img');
+
+
+// images.forEach(img => {
+//     img.addEventListener('click', handleSingleClick);
+//     img.addEventListener('dblclick', handleDoubleClick);
+// });
