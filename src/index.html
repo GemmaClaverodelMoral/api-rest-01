@@ -9,48 +9,51 @@
 </head>
 
 <body>
-  <header id="cabecera">
-    <div id="titulo">
-      <p>My Michis APP</p>
-      <img id="logo-gatito" src="./assets/logo-gatito-naranja.PNG" alt="logo-gatito-naranja">
+
+<header id="cabecera">
+  <div id="titulo">
+    <p>My Michis APP</p>
+    <img id="logo-gatito" src="./assets/logo-gatito-naranja.PNG" alt="logo-gatito-naranja">
+  </div>
+  <h3>Trabajando con API REST htpps://www.thecatapi.com: </h3>
+  <h3><span id="error"></span></h3>
+</header>
+
+<section id="random">
+  <div id="random-header">
+    
+    <Button onclick="cargarImagenesRandom()" alt="Boton de recarga con async">Recarga mas lindos mininos...</Button>
+    <h3>Hacer click sobre la imagen si deseas guardarla en tus Favoritas</h3>
+  </div>
+  <div id="random-list">
+    <img id='img01' alt="Foto Gatitos aleatoria">
+    <img id='img02' alt="Foto Gatitos aleatoria">
+    <img id='img03' alt="Foto Gatitos aleatoria">
+    <img id='img04' alt="Foto Gatitos aleatoria">
+    <img id='img05' alt="Foto Gatitos aleatoria">
+    <img id='img06' alt="Foto Gatitos aleatoria">
+  </div>    
+</section> 
+
+<section id="favourites">
+    <div id="favourites-header">
+        <h2>Mis Michis favoritos</h2>
+        <h3>Click sobre la imagene que desees sacar de Favoritos</h3>
+        <h3>DOBLE Click sobre la imagene que desees descargar a tu dispositivo o PC</h3>
     </div>
-    <h3>Trabajando con API REST htpps://www.thecatapi.com: </h3>
-    <h3><span id="error"></span></h3>
-  </header>
+    <div id="favourites-list"></div>
+    </div>
+</section>
 
-   <!-- <section id="promise-await"> PRUEBA DE PROMISE y ASYNC
-        <h2>1 foto Con Promise o con Async</h2>
-        <Button onclick="recargarImagen()" alt="Boton de recarga con promesas">Nueva imagen con promesa</BUtton>
-        <Button onclick="cargarImagenesRandom()" alt="Boton de recarga con async">Nueva imagen con await</BUtton><br>
-            
-        <img width='25%' alt="Foto Gatitos aleatoria">
-   </section> -->
-
-   <section id="random">
-     <div id="random-header">
-        
-        <Button onclick="cargarImagenesRandom()" alt="Boton de recarga con async">Recarga mas lindos mininos...</Button>
-        <h3>Hacer click sobre la imagen si deseas guardarla en tus Favoritas</h3>
-      </div>
-     <div id="random-list">
-        <img id='img01' alt="Foto Gatitos aleatoria">
-        <img id='img02' alt="Foto Gatitos aleatoria">
-        <img id='img03' alt="Foto Gatitos aleatoria">
-        <img id='img04' alt="Foto Gatitos aleatoria">
-        <img id='img05' alt="Foto Gatitos aleatoria">
-        <img id='img06' alt="Foto Gatitos aleatoria">
-      </div>    
-    </section>
-    
-    
-   <section id="favourites">
-        <div id="favourites-header">
-            <h2>Mis Michis favoritos</h2>
-            <h3>Hacer click sobre las imagenes si deseas sacar una foto de favoritos</h3>
-        </div>
-        <div id="favourites-list"></div>
-        </div>
-   </section>
+<section id="load-img">
+  <div id="load-img-header">
+    <h2>Sube tu imagen favorita de gatos a la API:</h2>
+  </div>
+  <form id="load-img-form">
+    <input type="file" name="file" id="archivo-gato">
+    <button type="button" onclick="uploadGato()">Subir Foto</button>
+  </form>
+</section>
 
 <script src="./main.js"></script>
 

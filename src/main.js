@@ -1,9 +1,10 @@
 const API_URL_RANDOM =     "https://api.thecatapi.com/v1/images/search?limit=6"
 const API_URL_FAVOURITES = 'https://api.thecatapi.com/v1/favourites'
 const API_URL_FAVOURITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`
+const API_URL_UPLOAD =     "https://api.thecatapi.com/v1/images/upload"
 
 const API_KEY = "live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq"
-  
+
 reloadbtn = document.querySelector('button')
 errorDOM = document.querySelector('#error')
 errorDOM.innerHTML = 'Aqui saldran los errores, ... si los hay'
@@ -92,7 +93,7 @@ async function favouriteOut(id) {
         {
         method: 'DELETE',
         headers: {
-            'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
+            'x-api-key': API_KEY
         }
         })
     const data = await res.json()
@@ -105,6 +106,22 @@ async function favouriteOut(id) {
         cargarFavoritas()
     }
 }
+
+async function uploadGato() {
+    const form = document.getElementById("load-img-form")
+    const formData = new FormData()
+    const res = await fetch(API_URL_UPLOAD,
+        {
+            method: 'POST',
+            headers: {
+                'x-api-key': API_KEY
+            },
+            body: formData
+        }
+    )
+    console.log('Foto de gatitos subida', res)
+}
+
 
 cargarImagenesRandom()
 cargarFavoritas()
