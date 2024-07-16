@@ -6,6 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 section {
     width: 80%;
@@ -15,6 +16,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+
 }
 #titulo {
     display:flex;
@@ -22,7 +25,14 @@ section {
     align-items: center;
     justify-items: center;
     margin-top: 20px;
+    padding: 8px;
     width: 200px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#titulo img {
+    margin: 0 0 0 20px;
 }
 #logo-gatito {
     width: 50px;
@@ -35,6 +45,11 @@ h1, h2, h3, button {
     text-align: center;
     margin-bottom:20px;
     padding:0;
+}
+
+#error {
+    color: red;
+    visibility: hidden;
 }
 #random-list, #favourites-list {
     display: grid;
@@ -52,7 +67,6 @@ h1, h2, h3, button {
 #random-list img:hover, #favourites-list img:hover {
     filter: brightness(80%);
     object-fit: contain;
-    
 }
 img {
     display: block;
@@ -68,7 +82,7 @@ img {
 }
 #load-img-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px;   
 }
 #load-img-header h2 {
     font-size: 24px;
@@ -109,6 +123,7 @@ background-color: #008CBA;
 color: white;
 border: none;
 padding: 10px 20px;
+margin-top: 20px;
 font-size: 16px;
 cursor: pointer;
 border-radius: 4px;
@@ -124,6 +139,6 @@ background-color: #0077A3;
 }
 @media (min-width: 1024px) {
     #random-list, #favourites-list {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
