@@ -8,108 +8,153 @@ body {
     font-family: Arial, sans-serif;
     font-weight: bold;
 }
+
 section {
     width: 80%;
-    margin: 0;
 }
+
 #cabecera {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
+
 #titulo {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     justify-items: center;
-    margin-top: 20px;
     padding: 8px;
+    margin: 8px;
     width: 200px;
     border: 2px solid black;
     border-radius: 5px;
 }
 
 #titulo img {
-    margin: 0 0 0 20px;
-}
-#logo-gatito {
+    margin-left: 20px;
     width: 50px;
+    box-shadow: none;
 }
+
+#random, 
+#cabecera,
+#favourites {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 #random-header, #favourites-header {
-    display:flex;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
-h1, h2, h3, button {
+
+h1, h2, h3, h4, button, input {
+    display: flex;
+    justify-content: center;
     text-align: center;
-    margin-bottom:20px;
-    padding:0;
+    margin: 8px;
+    padding: 0;
+    font-weight: bold;
+}
+
+h4 {
+    font-weight: 100;
+    color: grey;
 }
 
 #error {
     color: red;
     visibility: hidden;
 }
-#random-list, #favourites-list {
+
+#random-list,
+#favourites-list {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
-#random-list img, #favourites-list img {
+
+#random-list img,
+#favourites-list img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1; /* Ensure the container is square */
+    aspect-ratio: 1 / 1;
+    /* Ensure the container is square */
     object-fit: cover;
     border-radius: 15px;
     transition: transform 0.3s, filter 0.3s;
 }
-#random-list img:hover, #favourites-list img:hover {
+
+#random-list img:hover,
+#favourites-list img:hover {
     filter: brightness(80%);
     object-fit: contain;
+    box-shadow: none;
 }
+
 img {
     display: block;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 1);
     margin: 0 auto;
 }
-#load-img {
+
+#load-img-section{
     max-width: 600px;
-    margin: 50px auto;
+    margin: 10px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 #load-img-header {
     text-align: center;
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
 }
+
 #load-img-header h2 {
     font-size: 24px;
     color: #333;
 }
+
 #load-img-form {
+    display: flex;
     text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
+
 .file-input-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    
 }
+
 .file-input-wrapper label {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    margin:8px;
     border-radius: 4px;
     border: none;
     transition: background-color 0.3s;
 }
+
 .file-input-wrapper label:hover {
     background-color: #45a049;
 }
+
 .file-input-wrapper input[type="file"] {
     position: absolute;
     font-size: 100px;
@@ -118,27 +163,53 @@ img {
     opacity: 0;
     cursor: pointer;
 }
-#load-img-form button {
-background-color: #008CBA;
-color: white;
-border: none;
-padding: 10px 20px;
-margin-top: 20px;
-font-size: 16px;
-cursor: pointer;
-border-radius: 4px;
-transition: background-color 0.3s;
+
+button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
+
 #load-img-form button:hover {
-background-color: #0077A3;
+    background-color: #0077A3;
 }
+
+#file-preview {
+    text-align: center;
+}
+
+#image-preview {
+    display:none;
+    max-width: 100%; /* Ajustar el ancho máximo de la imagen previa */
+    max-height: 100px; /* Limitar la altura máxima de la imagen previa */
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+#image-preview.hide {
+    display: none; /* Ocultar la imagen cuando no haya vista previa */
+}
+
+#image-preview.show {
+    display: block; /* Mostrar la imagen cuando haya vista previa */
+}
+
+
 @media (min-width: 768px) {
-    #random-list, #favourites-list {
+    #random-list,
+    #favourites-list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (min-width: 1024px) {
-    #random-list, #favourites-list {
+    #random-list,
+    #favourites-list {
         grid-template-columns: repeat(4, 1fr);
     }
 }

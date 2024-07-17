@@ -15,7 +15,7 @@
     <p>My Michis APP</p>
     <img id="logo-gatito" src="./assets/logo-gatito-naranja.PNG" alt="logo-gatito-naranja">
   </div>
-  <h3>Trabajando con API REST htpps://www.thecatapi.com: </h3>
+  <h4>Trabajando con API REST htpps://www.thecatapi.com: </h4>
   <h3><span id="error"></span></h3>
 </header>
 
@@ -23,7 +23,7 @@
   <div id="random-header">
     
     <Button onclick="cargarImagenesRandom()" alt="Boton de recarga con async">Recarga mas lindos mininos...</Button>
-    <h3>NUEVAS IMAGENES: Haz click sobre la imagen, si deseas guardarla</h3>
+    <h4>Haz click sobre la imagen, si deseas guardarla</h4>
   </div>
   <div id="random-list">
   </div>    
@@ -32,23 +32,30 @@
 <section id="favourites">
     <div id="favourites-header">
         <h2>Mis Michis favoritos</h2>
-        <h3>Click sobre la imagene que desees sacar de Favoritos</h3>
-        <h3>DOBLE Click sobre la imagene que desees descargar a tu dispositivo o PC</h3>
+        <h4>Click sobre la imagene que desees sacar de Favoritos</h4>
+        <h4>DOBLE Click sobre la imagene que desees descargar a tu dispositivo o PC</h4>
     </div>
     <div id="favourites-list"></div>
     </div>
 </section>
 
-<section id="load-img">
+
+<section id="load-img-section">
   <div id="load-img-header">
-    <h2>Guarda en la nube tu imagen favorita: ! Solo gatos !</h2>
+      <h2>Guarda en la nube tu imagen favorita</h2>
+      <h4>Y tambien en tus favoritas</h4>
   </div>
   <form id="load-img-form">
-    <input type="file" name="file" id="file">
-    <button type="button" onclick="uploadGato()">Subir Foto</button>
+      <div class="file-input-wrapper">
+          <label for="file" class="custom-file-upload">Seleccionar Imagen</label>
+          <input type="file" name="file" id="file" accept="image/*">
+      </div>
+      <div id="file-preview">
+          <img id="image-preview" src="#" alt="Imagen Seleccionada">
+      </div>
+      <button type="button" onclick="uploadGato()">Subir Imagen</button>
   </form>
 </section>
-
 <script src="./main.js"></script>
 
 </body>

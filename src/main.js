@@ -5,10 +5,31 @@ const API_URL_UPLOAD =                    "https://api.thecatapi.com/v1/images/u
 
 const API_KEY = "live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq"
 
-reloadbtn = document.querySelector('button')
-errorDOM = document.querySelector('#error')
+const reloadbtn    = document.querySelector('button')
+const errorDOM     = document.querySelector('#error')
+const form         = document.querySelector("#load-img-form");
+const inputFile    = document.querySelector('#file')
+const imagePreview = document.querySelector('#image-preview');
 
-// //******* CON FUNCION ASINCRONA 
+inputFile.addEventListener('change', verMiniatura)
+        
+function verMiniatura() {
+
+    const file = inputFile.files[0];
+    console.log('aqui debe estar el fichero de la imagen: ',file)
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+            imagePreview.src = event.target.result;
+            imagePreview.style.display = 'block';
+            } 
+
+        reader.readAsDataURL(file);
+    } else {
+         imagePreview.style.display = 'none'
+    }
+};
 
 async function cargarImagenesRandom() {
     const res = await fetch( API_URL_RANDOM, 
@@ -105,26 +126,26 @@ async function favouriteOut(id) {
     }
 }
 async function uploadGato() {
-    const form = document.getElementById("load-img-form")
-    const formData = new FormData(form)
-    const res = await fetch(API_URL_UPLOAD,
-        {
-            method: 'POST',
-            headers: {
-                'x-api-key': API_KEY
-            },
-            body: formData
-        }
-    )
-    const data = await res.json()
-    if (res.status !==200) {
-        console.log('error subiendo imagen', res)
-        errorDOM.style.visibility = 'visible'
-        errorDOM.innerHTML = res.status + ': Error subiendo imagen'
+    
+    const formData = new FormData(form);
+    const res = await fetch(API_URL_UPLOAD, {
+        method: 'POST',
+        headers: {
+            'x-api-key': API_KEY
+        },
+        body: formData,
+    });
+
+    const data = await res.json();
+    if (res.status !== 201) {
+        console.log('error subiendo imagen', res);
+        const errorDOM = document.getElementById('error');
+        errorDOM.style.visibility = 'visible';
+        errorDOM.innerHTML = `${res.status}: Error subiendo imagen`;
     } else {
-        
-        console.log('imagen añadida a la API')
-        cargarFavoritas()
+        console.log('imagen añadida a la API');
+        saveFavourite(data.id)  // Se incluye automaticamente la foto subida del local a nuestros favoritos. 
+        cargarFavoritas(); // Asegúrate de definir esta función correctamente en tu main.js
     }
 }
 
