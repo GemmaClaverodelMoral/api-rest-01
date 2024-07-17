@@ -1,9 +1,15 @@
+
+const API_KEY = "live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq"
+const api = axios.create({ // usando axios
+    baseURL: 'https://api.thecatapi.com/v1'
+})
+api.defaults.headers.common['x-api-key'] = API_KEY;
 const API_URL_RANDOM =                    "https://api.thecatapi.com/v1/images/search?limit=8"
 const API_URL_FAVOURITES =                "https://api.thecatapi.com/v1/favourites"
 const API_URL_FAVOURITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`
 const API_URL_UPLOAD =                    "https://api.thecatapi.com/v1/images/upload"
 
-const API_KEY = "live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq"
+
 
 const reloadbtn    = document.querySelector('button')
 const errorDOM     = document.querySelector('#error')
@@ -70,22 +76,27 @@ async function cargarFavoritas(){
 
 async function saveFavourite(id) {
 
-    const res = await fetch(API_URL_FAVOURITES, 
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
-            },
-            body: JSON.stringify({image_id : id})
-        })
+    // const res = await fetch(API_URL_FAVOURITES, 
+    //     {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'x-api-key': 'live_eMgT6uUDyZPYQeb0AMktYVCzGkiic7BMm2IuLHwxvYR0PyGx7gEnCr14sM3tsZxq'
+    //         },
+    //         body: JSON.stringify({image_id : id})
+    //     })
+    // const data = await res.json()
     
-    if (res.status !==200) {
-        console.log('error salvando nueva favorita', res)
+    const {data, status} = await api.post('/favourites', { // idem a anterior pero con axios
+        image_id : id,
+    })
+
+    if (status !==200) {
+        console.log('error salvando nueva favorita', status)
         errorDOM.style.visibility = 'visible'
-        errorDOM.innerHTML = res.status + ': Error salvando imagen'
+        errorDOM.innerHTML = status + ': Error salvando imagen' + data
     } else {
-        const data = await res.json()
+        
         console.log('imagen añadida a favoritos')
         cargarFavoritas()
     }
