@@ -11,25 +11,7 @@ const form         = document.querySelector("#load-img-form");
 const inputFile    = document.querySelector('#file')
 const imagePreview = document.querySelector('#image-preview');
 
-inputFile.addEventListener('change', verMiniatura)
-        
-function verMiniatura() {
 
-    const file = inputFile.files[0];
-    console.log('aqui debe estar el fichero de la imagen: ',file)
-    if (file) {
-        const reader = new FileReader();
-        
-        reader.onload = function(event) {
-            imagePreview.src = event.target.result;
-            imagePreview.style.display = 'block';
-            } 
-
-        reader.readAsDataURL(file);
-    } else {
-         imagePreview.style.display = 'none'
-    }
-};
 
 async function cargarImagenesRandom() {
     const res = await fetch( API_URL_RANDOM, 
@@ -59,6 +41,7 @@ async function cargarImagenesRandom() {
     }
 
 }
+
 async function cargarFavoritas(){
     const res = await fetch( API_URL_FAVOURITES, {
         method: 'GET',
@@ -84,6 +67,7 @@ async function cargarFavoritas(){
         }
     }
 }
+
 async function saveFavourite(id) {
 
     const res = await fetch(API_URL_FAVOURITES, 
@@ -106,6 +90,7 @@ async function saveFavourite(id) {
         cargarFavoritas()
     }
 }
+
 async function favouriteOut(id) {
     console.log('gatito a eliminar:',id)
     const res = await fetch(API_URL_FAVOURITES_DELETE(id),
@@ -125,6 +110,7 @@ async function favouriteOut(id) {
         cargarFavoritas()
     }
 }
+
 async function uploadGato() {
     
     const formData = new FormData(form);
@@ -151,6 +137,26 @@ async function uploadGato() {
 
 cargarImagenesRandom()
 cargarFavoritas()
+
+inputFile.addEventListener('change', verMiniatura)
+        
+function verMiniatura() {
+
+    const file = inputFile.files[0];
+    console.log('aqui debe estar el fichero de la imagen: ',file)
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+            imagePreview.src = event.target.result;
+            imagePreview.style.display = 'block';
+            } 
+
+        reader.readAsDataURL(file);
+    } else {
+         imagePreview.style.display = 'none'
+    }
+};
 
 //  function handleDoubleClick(event) {
 //     const imageId = event.target.id;
