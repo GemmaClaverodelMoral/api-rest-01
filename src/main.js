@@ -75,7 +75,7 @@ async function cargarFavoritas(){
 }
 
 async function saveFavourite(id) {
-
+    // sin axios
     // const res = await fetch(API_URL_FAVOURITES, 
     //     {
     //         method: 'POST',
@@ -87,7 +87,8 @@ async function saveFavourite(id) {
     //     })
     // const data = await res.json()
     
-    const {data, status} = await api.post('/favourites', { // idem a anterior pero con axios
+    // idem a anterior pero con axios- Mantengo las dos versiones
+    const {data, status} = await api.post('/favourites', { 
         image_id : id,
     })
 
@@ -134,6 +135,7 @@ async function uploadGato() {
     });
 
     const data = await res.json();
+
     if (res.status !== 201) {
         console.log('error subiendo imagen', res);
         const errorDOM = document.getElementById('error');
@@ -173,11 +175,7 @@ function verMiniatura() {
 //     const imageId = event.target.id;
 //     console.log('Imagen doble clickeada:', imageId);
 
-// 4XL 6L 2M - 1 Yhan 10 Omar Juan Gris - 
-
-
 // const images = document.querySelectorAll('#favourites-list img');
-
 
 // images.forEach(img => {
 //     img.addEventListener('click', handleSingleClick);
